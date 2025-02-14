@@ -6,7 +6,53 @@ def calculate_size(percent, total):
 
 # ---------------Main Functions------------------
 def show_add_contact():
-    pass
+    clear_widgets(central_frame)
+
+    CTkLabel(
+        central_frame,
+        text="Add Contact",
+        font=("Arial Bold", 30)
+    ).pack(pady=calculate_size(4, height))
+
+    bordered_frame = CTkFrame(
+        central_frame,
+        corner_radius=10,
+        border_width=2)
+    bordered_frame.pack(padx=calculate_size(3, width), pady=calculate_size(3, height), fill="both", expand=False)
+
+    entry_width = calculate_size(50, width)
+    label_width = calculate_size(15, width)
+    row_padding = calculate_size(2, height)
+
+    form_frame = CTkFrame(
+        bordered_frame,
+        border_width=2,
+        )
+    form_frame.pack(padx=row_padding, pady=row_padding, fill="both", expand=False)
+
+    # use for loop -> enumerate()
+    CTkLabel(form_frame, text="Contact Name *", text_color="black", width=label_width).grid(row=0, column=0, padx=row_padding, pady=row_padding, sticky="w")
+    name_entry = CTkEntry(form_frame, placeholder_text="Contact Name", width=entry_width, height=calculate_size(6,height))
+    name_entry.grid(row=0, column=1, padx=row_padding, pady=row_padding, sticky="ew")
+
+    CTkLabel(form_frame, text="Phone *", text_color="black", width=label_width).grid(row=1, column=0, padx=row_padding, pady=row_padding, sticky="ew")
+    phone_entry = CTkEntry(form_frame, placeholder_text="Phone Number", width=entry_width, height=calculate_size(6, height))
+    phone_entry.grid(row=1, column=1, padx=row_padding, pady=row_padding, sticky="ew")
+
+    CTkLabel(form_frame, text="Email", text_color="black", width=label_width).grid(row=2, column=0, padx=row_padding, pady=row_padding)
+    email_entry = CTkEntry(form_frame, placeholder_text="Email", width=entry_width, height=calculate_size(6, height))
+    email_entry.grid(row=2, column=1, padx=row_padding, pady=row_padding, sticky="ew")
+
+    CTkLabel(form_frame, text="Address", text_color="black", width=label_width).grid(row=3, column=0, padx=row_padding, pady=row_padding, sticky="ew")
+    address_entry = CTkEntry(form_frame, placeholder_text="Address", width=entry_width, height=calculate_size(6, height))
+    address_entry.grid(row=3, column=1, padx=row_padding, pady=row_padding, sticky="ew")
+
+    CTkButton(form_frame,
+              text="Add Contact",
+              corner_radius=10,
+              command=lambda: submit_contact(name_entry, phone_entry, email_entry, address_entry)
+              ).grid(row=4, column=1, padx=row_padding, pady=row_padding, sticky="e")
+
 
 # ---------------Initial Functions---------------
 def show_empty_state():
