@@ -9,6 +9,12 @@ def show_add_contact():
     pass
 
 # ---------------Initial Functions---------------
+def show_empty_state():
+    CTkLabel(central_frame,
+             text="Empty. Pick an action, (ex:Add contact or Manage DB)",
+             font=("Arial",20),
+             text_color="gray").pack(expand=True)
+
 def create_nav_button(text, command):
     button = CTkButton(navbar_frame,
               text=text,
@@ -47,6 +53,11 @@ navbar_frame.pack(side='left', fill='y')
 
 CTkLabel(navbar_frame, text="Manage DB", width=navbar_width, font=("Arial", 28)).pack(pady=calculate_size(2, height))
 
+add_navbar_buttons()
 
+central_frame = CTkFrame(window, corner_radius=0)
+central_frame.pack(side="left",fill="both",expand=True)
+
+show_empty_state()
 
 window.mainloop()
