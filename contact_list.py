@@ -1,8 +1,26 @@
 from customtkinter import *
 
-#----------------Utility Functions---------------
+# ---------------Utility Functions---------------
 def calculate_size(percent, total):
      return int((percent / 100) * total)
+
+# ---------------Main Functions------------------
+def show_add_contact():
+    pass
+
+# ---------------Initial Functions---------------
+def create_nav_button(text, command):
+    button = CTkButton(navbar_frame,
+              text=text,
+              width=navbar_width,
+              height=calculate_size(8, height),
+              corner_radius=0,
+              command=command).pack()
+    return button
+
+def add_navbar_buttons():
+    create_nav_button("Add Contact", show_add_contact)
+    # create_nav_button("Manage DB", show_manage_db)
 
 # ---------------Application Theme---------------
 set_appearance_mode("system")
