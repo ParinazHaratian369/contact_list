@@ -1,5 +1,9 @@
 from customtkinter import *
 
+# ---------------Application Theme---------------
+set_appearance_mode("system")
+set_default_color_theme("breeze.json")
+
 # ----------------Setup-------------------
 window = CTk()
 window.title("Contact List App")
