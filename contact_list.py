@@ -1,5 +1,9 @@
 from customtkinter import *
 
+#----------------Utility Functions---------------
+def calculate_size(percent, total):
+     return int((percent / 100) * total)
+
 # ---------------Application Theme---------------
 set_appearance_mode("system")
 set_default_color_theme("breeze.json")
@@ -18,6 +22,13 @@ x = ((screen_width // 2) - (width // 2))
 y = ((screen_height // 2) - (height // 2))
 
 window.geometry(f"{width}x{height}+{x}+{y}")
+
+navbar_width = calculate_size(20, width)
+navbar_frame = CTkFrame(window, width=navbar_width, corner_radius=0)
+navbar_frame.pack(side='left', fill='y')
+
+CTkLabel(navbar_frame, text="Manage DB", width=navbar_width, font=("Arial", 28)).pack(pady=calculate_size(2, height))
+
 
 
 window.mainloop()
