@@ -67,17 +67,17 @@ def show_empty_state():
              font=("Arial",20),
              text_color="gray").pack(expand=True)
 
-def create_nav_button(text, command):
-    button = CTkButton(navbar_frame,
+def create_side_button(text, command):
+    button = CTkButton(sidebar_frame,
               text=text,
-              width=navbar_width,
+              width=sidebar_width,
               height=calculate_size(8, height),
               corner_radius=0,
               command=command).pack()
     return button
 
-def add_navbar_buttons():
-    create_nav_button("Add Contact", show_add_contact)
+def add_sidebar_buttons():
+    create_side_button("Add Contact", show_add_contact)
     # create_nav_button("Manage DB", show_manage_db)
 
 # ---------------Application Theme---------------
