@@ -4,6 +4,10 @@ from customtkinter import *
 def calculate_size(percent, total):
      return int((percent / 100) * total)
 
+def clear_widgets(parent):
+    for widget in parent.winfo_children():
+        widget.destroy()
+
 # ---------------Main Functions------------------
 def show_add_contact():
     clear_widgets(central_frame)
@@ -54,6 +58,8 @@ def show_add_contact():
               ).grid(row=4, column=1, padx=row_padding, pady=row_padding, sticky="e")
 
 
+
+
 # ---------------Initial Functions---------------
 def show_empty_state():
     CTkLabel(central_frame,
@@ -93,13 +99,13 @@ y = ((screen_height // 2) - (height // 2))
 
 window.geometry(f"{width}x{height}+{x}+{y}")
 
-navbar_width = calculate_size(20, width)
-navbar_frame = CTkFrame(window, width=navbar_width, corner_radius=0)
-navbar_frame.pack(side='left', fill='y')
+sidebar_width = calculate_size(20, width)
+sidebar_frame = CTkFrame(window, width=sidebar_width, corner_radius=0)
+sidebar_frame.pack(side='left', fill='y')
 
-CTkLabel(navbar_frame, text="Manage DB", width=navbar_width, font=("Arial", 28)).pack(pady=calculate_size(2, height))
+CTkLabel(sidebar_frame, text="Manage DB", width=sidebar_width, font=("Arial", 28)).pack(pady=calculate_size(2, height))
 
-add_navbar_buttons()
+add_sidebar_buttons()
 
 central_frame = CTkFrame(window, corner_radius=0)
 central_frame.pack(side="left",fill="both",expand=True)
