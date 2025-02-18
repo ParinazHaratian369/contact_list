@@ -16,9 +16,13 @@ def show_add_contact():
 
     bordered_frame = CTkFrame(central_frame, corner_radius=10, border_width=2)
     bordered_frame.pack(padx=calculate_size(3, width), pady=calculate_size(3, height), fill='both', expand=False)
-    
 
+    entry_width = calculate_size(50, width)
+    label_width = calculate_size(15, width)
+    row_padding = calculate_size(2, height)
 
+    form_frame = CTkFrame(bordered_frame, border_width=2)
+    form_frame.pack(padx=row_padding, pady=row_padding, fill='both', expand=False)
 
 
 
