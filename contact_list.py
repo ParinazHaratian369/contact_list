@@ -1,4 +1,18 @@
 from customtkinter import *
+import json
+
+# ---------------Handle Database-----------------
+def database_handler(path):
+    try:
+        with open(path, 'r') as f:
+            database = json.load(f)
+    except:
+        database={}
+        with open(path, 'w') as f:
+            json.dump(database, f, indent=4)
+
+    return database
+
 
 # ---------------Utility Functions---------------
 def calculate_size(percent, total):
@@ -9,8 +23,9 @@ def clear_widgets(parent):
         widget.destroy()
 
 # ---------------Main Functions------------------
-def submit_contact():
+def submit_contact(name, phone , email, address):
     pass
+
 
 def show_add_contact():
     clear_widgets(central_frame)
