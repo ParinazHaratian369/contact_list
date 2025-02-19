@@ -26,6 +26,10 @@ def clear_widgets(parent):
     for widget in parent.winfo_children():
         widget.destroy()
 
+def save_cantacts():
+    with open(path, "w") as f:
+        json.dump(contacts, f, indent=4)       
+
 # ---------------Main Functions------------------
 def is_valid_email(email_address):
     pattern = r"^[A-Za-z0-9_.+-]+@[A-Za-z0-9]+\.[a-z]+$"
@@ -53,7 +57,9 @@ def submit_contact(name, phone , email, address):
                                 'address': city
                             }
                         })
-    print(contacts)
+    save_contacts()
+    
+
 
 def show_add_contact():
     clear_widgets(central_frame)
