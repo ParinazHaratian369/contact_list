@@ -26,7 +26,7 @@ def clear_widgets(parent):
     for widget in parent.winfo_children():
         widget.destroy()
 
-def save_cantacts():
+def save_contacts():
     with open(path, "w") as f:
         json.dump(contacts, f, indent=4)       
 
@@ -57,8 +57,21 @@ def submit_contact(name, phone , email, address):
                                 'address': city
                             }
                         })
-    save_contacts()
-    
+
+                        save_contacts()
+                        mb.showinfo("Success", "Contact added successfully")
+                    else:
+                        mb.showerror("Incorrect Format", "Invalid city; It should be a string")
+                else:
+                    mb.showerror("Incorrect Format", "Invalid adderss; ex.parinaz@gmail.com")
+            else:
+                mb.showerror("Incorrect Format", "Invalid phone number")
+        else:
+            mb.showerror("Invalid Format", "Invalid contact name")
+    else:
+        mb.showerror("Error", "Contact Already Exists!")
+    print(contacts)
+
 
 
 def show_add_contact():
