@@ -24,6 +24,18 @@ def show_add_contact():
     form_frame = CTkFrame(bordered_frame, border_width=2)
     form_frame.pack(padx=row_padding, pady=row_padding, fill='both', expand=False)
 
+    entries_data = ["Contact Name *", "Phone *", "Email", "Address"]
+    entry_widgets={}
+
+    for index, label in enumerate(entries_data):
+
+        CTkLabel(form_frame ,text=f"{label}", width=label_width).grid(row=index, column=0, padx=row_padding, pady=row_padding, sticky='w')
+
+        entry = CTkEntry(form_frame, placeholder_text=f"{label}", width=entry_width, height=calculate_size(6, height))
+        entry.grid(row=index, column=1, padx=row_padding, pady=row_padding, sticky='w')
+
+        entry_widgets[label]=entry
+
 
 
 
