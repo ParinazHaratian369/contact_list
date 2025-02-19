@@ -9,6 +9,9 @@ def clear_widgets(parent):
         widget.destroy()
 
 # ---------------Main Functions------------------
+def submit_contact():
+    pass
+
 def show_add_contact():
     clear_widgets(central_frame)
 
@@ -36,8 +39,15 @@ def show_add_contact():
 
         entry_widgets[label]=entry
 
-
-
+    CTkButton(form_frame,
+              text="Add Contact",
+             corner_radius=10,
+             command=lambda:submit_contact(entry_widgets["Contact Name *"],
+                                           entry_widgets["Phone *"], 
+                                           entry_widgets["Email"], 
+                                           entry_widgets["Address"])
+                                           ).grid(row=4, column=1, padx=row_padding, pady=row_padding, sticky='e')
+ 
 
 # ---------------Initial Functions---------------
 def show_empty_state():
