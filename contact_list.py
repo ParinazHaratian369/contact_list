@@ -1,5 +1,7 @@
 from customtkinter import *
 import json
+from tkinter import messagebox as mb
+import re
 
 # ---------------Handle Database-----------------
 def database_handler(path):
@@ -25,9 +27,33 @@ def clear_widgets(parent):
         widget.destroy()
 
 # ---------------Main Functions------------------
-def submit_contact(name, phone , email, address):
-    pass
+def is_valid_email(email_address):
+    pattern = r"^[A-Za-z0-9_.+-]+@[A-Za-z0-9]+\.[a-z]+$"
+    return bool(re.match(pattern, email_address))
 
+def submit_contact(name, phone , email, address):
+    contact_name = name.get()
+    phone_number = phone.get()
+    email_address = email.get()
+    city = address.get()
+
+    if not contact_name or not phone_number or not email_address or not city:
+        mb.showerror("Empty Field", "All fields must be filled!")
+        return
+
+    if contact_name not in contacts:
+        if contact_name.isalpha():
+            if phone_number.isnumeric():
+                if is_valid_email(email_address):
+                    if city.isalpha():
+                        contacts.update({
+                            contact_name:{
+                                'phone': phone_number,
+                                'email': email_address,
+                                'address': city
+                            }
+                        })
+    print(contacts)
 
 def show_add_contact():
     clear_widgets(central_frame)
