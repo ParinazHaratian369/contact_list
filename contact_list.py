@@ -13,6 +13,8 @@ def database_handler(path):
 
     return database
 
+path = "contacts.json"
+contacts = database_handler(path)
 
 # ---------------Utility Functions---------------
 def calculate_size(percent, total):
