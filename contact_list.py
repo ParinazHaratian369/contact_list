@@ -121,10 +121,17 @@ def create_table(table_frame):
     global table
 
     table = ttk.Treeview(table_frame, columns=("name", "phone", "email", "address"), show="headings", height=15)
+    
     table.heading("name", text="Contact Name")
-    table.column("name")
+    table.heading("phone", text="Phone Number")
+    table.heading("email", text="Email Address")
+    table.heading("address", text="City")
+    table.column("name", width=calculate_size(15, width))
+    table.column("phone", width=calculate_size(15, width))
+    table.column("email", width=calculate_size(20, width))
+    table.column("address", width=calculate_size(10, width))
 
-    table.pack()
+    table.pack(fill="both")
 
 def show_manage_db():
     # clear central frame
