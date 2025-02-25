@@ -125,6 +125,13 @@ def show_manage_db():
     search_frame = CTkFrame(bordered_frame)
     search_frame.pack(padx=calculate_size(2, height), pady=calculate_size(2, height), fill="x")
 
+    # defining an entry to search a contact member
+    search_entry = CTkEntry(search_frame, placeholder_text="Search Name", width=calculate_size(25, width))
+    search_entry.pack(side="left")
+
+    # search button
+    CTkButton(search_frame, text="Search", command=lambda: search_contact(search_entry.get())).pack(side="right")
+
     # defining table_frame
     table_frame = CTkFrame(bordered_frame)
     table_frame.pack(padx=calculate_size(2, height), pady=calculate_size(1, height), fill="x", expand=False)
