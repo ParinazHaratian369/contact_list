@@ -2,6 +2,7 @@ from customtkinter import *
 import json
 from tkinter import messagebox as mb
 import re
+from tkinter import ttk
 
 # ---------------Handle Database-----------------
 def database_handler(path):
@@ -28,7 +29,10 @@ def clear_widgets(parent):
 
 def save_contacts():
     with open(path, "w") as f:
-        json.dump(contacts, f, indent=4)       
+        json.dump(contacts, f, indent=4)  
+
+def populate_table(filter_name=""):
+    pass
 
 # ---------------Main Functions------------------
 def is_valid_email(email_address):
@@ -110,6 +114,18 @@ def show_add_contact():
                                            entry_widgets["Address"])
                                            ).grid(row=4, column=1, padx=row_padding, pady=row_padding, sticky='e')
  
+def search_contact(name):
+    populate_table(name)
+
+def create_table(table_frame):
+    global table
+
+    table = ttk.Treeview(table_frame, columns=("name", "phone", "email", "address"), show="headings", height=15)
+    table.heading("name", text="Contact Name")
+    table.column("name")
+
+    table.pack()
+
 def show_manage_db():
     # clear central frame
     clear_widgets(central_frame)
@@ -135,6 +151,9 @@ def show_manage_db():
     # defining table_frame
     table_frame = CTkFrame(bordered_frame)
     table_frame.pack(padx=calculate_size(2, height), pady=calculate_size(1, height), fill="x", expand=False)
+
+    # creating the table
+    create_table(table_frame)
 
 
 
