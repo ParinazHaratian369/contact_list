@@ -110,6 +110,26 @@ def show_add_contact():
                                            entry_widgets["Address"])
                                            ).grid(row=4, column=1, padx=row_padding, pady=row_padding, sticky='e')
  
+def show_manage_db():
+    # clear central frame
+    clear_widgets(central_frame)
+
+    # add Manage DB label
+    CTkLabel(central_frame, text="ManageDB", font=("Arial", 30)).pack(pady=calculate_size(2, height))
+
+    # defining bordered_frame
+    bordered_frame = CTkFrame(central_frame)
+    bordered_frame.pack(padx=calculate_size(3, height), pady=calculate_size(2, height), fill="both", expand=False)
+
+    # defining search_frame
+    search_frame = CTkFrame(bordered_frame)
+    search_frame.pack(padx=calculate_size(2, height), pady=calculate_size(2, height), fill="x")
+
+    # defining table_frame
+    table_frame = CTkFrame(bordered_frame)
+    table_frame.pack(padx=calculate_size(2, height), pady=calculate_size(1, height), fill="x", expand=False)
+
+
 
 # ---------------Initial Functions---------------
 def show_empty_state():
@@ -129,7 +149,7 @@ def create_side_button(text, command):
 
 def add_sidebar_buttons():
     create_side_button("Add Contact", show_add_contact)
-    # create_nav_button("Manage DB", show_manage_db)
+    create_side_button("Manage DB", show_manage_db)
 
 # ---------------Application Theme---------------
 set_appearance_mode("system")
